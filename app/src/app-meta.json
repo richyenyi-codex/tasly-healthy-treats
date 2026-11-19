@@ -1,8 +1,8 @@
 {
-  "og_title": null,
-  "og_description": null,
-  "og_image_url": null,
-  "favicon_url": null,
+  "og_title": "Tasly Healthy Treats",
+  "og_description": "Discover Tasly Healthy Treats, explore the menu and get in touch.",
+  "og_image_url": "https://tasly-treats-studio.higgsfield.app/assets/images/tasly-og.jpg",
+  "favicon_url": "/favicon.svg",
   "og_video_url": null,
-  "marketplace_cover_url": null
+  "marketplace_cover_url": "https://tasly-treats-studio.higgsfield.app/assets/images/tasly-cover.jpg"
 }
