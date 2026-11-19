@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageIntro, SiteShell } from "@/components/site-shell";
 
 export const Route = createFileRoute("/gallery")({
@@ -32,7 +32,7 @@ function GalleryPage() {
                 />
               </div>
               <a href={post.url} target="_blank" rel="noreferrer" className="instagram-gallery__link">
-                <Instagram size={16} /> View original on Instagram <ArrowUpRight size={15} />
+                <span className="instagram-glyph" aria-hidden="true">ig</span> View original on Instagram <ArrowUpRight size={15} />
               </a>
             </article>
           ))}
