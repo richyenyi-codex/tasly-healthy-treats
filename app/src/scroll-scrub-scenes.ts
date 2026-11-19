@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { Link } from "@tanstack/react-router";
 import type { ScrollScrubScene, ScrollScrubTheme } from "@/components/scroll-scrub/scroll-scrub";
 
@@ -16,14 +17,17 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
     kicker: "TASLY HEALTHY TREATS",
     label: "The fresh table",
     poster: "/assets/world/scene-01-poster.png",
+    mobileClip: "/assets/world/scene-01-mobile.mp4",
+    mobilePoster: "/assets/world/scene-01-mobile-poster.png",
+    mobileObjectPosition: "50% 50%",
     title: "A fresher kind of treat.",
     scroll: 2.4,
     objectPosition: "50% 50%",
-    actions: (
-      <>
-        <Link to="/menu" className="scrub-cta scrub-cta--primary">Explore the menu</Link>
-        <Link to="/contact" className="scrub-cta scrub-cta--secondary">Contact Tasly</Link>
-      </>
+    actions: createElement(
+      "div",
+      { className: "scrub-action-row" },
+      createElement(Link, { to: "/menu", className: "scrub-cta scrub-cta--primary" }, "Explore the menu"),
+      createElement(Link, { to: "/contact", className: "scrub-cta scrub-cta--secondary" }, "Contact Tasly"),
     ),
   },
 ];

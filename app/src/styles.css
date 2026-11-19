@@ -411,3 +411,4 @@ body { margin: 0; }
 .menu-faq__row h3 { margin: 0; font-size: 15px; }
 .menu-faq__row p { max-width: 540px; margin: 0; color: var(--tasly-muted); font-size: 14px; line-height: 1.7; }
 @media (max-width: 600px) { .menu-faq__row { grid-template-columns: 1fr; gap: 8px; } }
+.scrub-action-row { display: flex; flex-wrap: wrap; gap: 12px; }
