@@ -412,3 +412,5 @@ body { margin: 0; }
 .menu-faq__row p { max-width: 540px; margin: 0; color: var(--tasly-muted); font-size: 14px; line-height: 1.7; }
 @media (max-width: 600px) { .menu-faq__row { grid-template-columns: 1fr; gap: 8px; } }
 .scrub-action-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.instagram-glyph { display: inline-grid; place-items: center; width: 18px; height: 18px; border: 1px solid currentColor; border-radius: 5px; font-size: 10px; font-weight: 800; letter-spacing: -.04em; }

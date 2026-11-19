@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, Leaf, Menu, X } from "lucide-react";
+import { ArrowUpRight, Leaf, Menu, X } from "lucide-react";
 import { INSTAGRAM_URL, SITE_NAME } from "@/lib/site-data";
 
 const links = [
@@ -106,6 +106,6 @@ export function PageIntro({ eyebrow, title, description }: { eyebrow: string; ti
 }
 
 export function InstagramLink({ label = "Follow Tasly on Instagram" }: { label?: string }) {
-  return <a className="instagram-link" href={INSTAGRAM_URL} target="_blank" rel="noreferrer"><Instagram size={17} /> {label} <ArrowUpRight size={15} /></a>;
+  return <a className="instagram-link" href={INSTAGRAM_URL} target="_blank" rel="noreferrer"><span className="instagram-glyph" aria-hidden="true">ig</span> {label} <ArrowUpRight size={15} /></a>;
 }
 
