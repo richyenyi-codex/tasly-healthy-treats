@@ -1,71 +1,44 @@
-import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ArrowUpRight, Instagram } from "lucide-react";
 import { PageIntro, SiteShell } from "@/components/site-shell";
-import { GALLERY_ITEMS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/gallery")({
-  head: () => ({ meta: [{ title: "Gallery | Tasly Healthy Treats" }, { name: "description", content: "A look at the atmosphere and visual world of Tasly Healthy Treats." }] }),
+  head: () => ({ meta: [{ title: "Gallery | Tasly Healthy Treats" }, { name: "description", content: "Photos and videos shared by Tasly Healthy Treats on Instagram." }] }),
   component: GalleryPage,
 });
 
+const INSTAGRAM_POSTS = [
+  { id: "Cx-oL1bIuG8", type: "reel", label: "Tasly Instagram Reel 1", url: "https://www.instagram.com/reel/Cx-oL1bIuG8/" },
+  { id: "DfW3UwBkQy7", type: "p", label: "Tasly Instagram post 1", url: "https://www.instagram.com/p/DfW3UwBkQy7/" },
+  { id: "Dfkf_COAmcU", type: "p", label: "Tasly Instagram post 2", url: "https://www.instagram.com/p/Dfkf_COAmcU/" },
+  { id: "Dfl5QLUh81t", type: "reel", label: "Tasly Instagram Reel 2", url: "https://www.instagram.com/reel/Dfl5QLUh81t/" },
+] as const;
+
 function GalleryPage() {
-  const [active, setActive] = useState<number | null>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const current = active === null ? null : GALLERY_ITEMS[active];
-
-  useEffect(() => {
-    if (active === null) return;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    closeRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
-      if (event.key === "ArrowRight") setActive((v) => v === null ? null : (v + 1) % GALLERY_ITEMS.length);
-      if (event.key === "ArrowLeft") setActive((v) => v === null ? null : (v + GALLERY_ITEMS.length - 1) % GALLERY_ITEMS.length);
-      if (event.key === "Tab") {
-        event.preventDefault();
-        closeRef.current?.focus();
-      }
-    };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-      previousFocus?.focus();
-    };
-  }, [active]);
-
   return (
     <SiteShell>
       <main className="inner-page">
-        <PageIntro eyebrow="Gallery" title="Tasly Healthy Treats, in view." description="Photos and videos from Tasly’s Instagram will appear here. The gallery is being kept clear until the original posts are supplied." />
-        <section className="gallery-grid" aria-label="Tasly gallery">
-          {GALLERY_ITEMS.map((item, index) => (
-            <button className="gallery-tile" type="button" key={item.src} onClick={() => setActive(index)} aria-label={`Open image: ${item.caption}`}>
-              <img src={item.src} alt={item.alt} />
-              <span>{item.caption}</span>
-            </button>
+        <PageIntro eyebrow="Gallery" title="Tasly Healthy Treats, in view." description="A collection of posts and Reels shared by Tasly. Each item is embedded from the original Instagram account." />
+        <section className="instagram-gallery" aria-label="Tasly Instagram posts and Reels">
+          {INSTAGRAM_POSTS.map((post) => (
+            <article className="instagram-gallery__item" key={post.id}>
+              <div className="instagram-gallery__frame">
+                <iframe
+                  src={`https://www.instagram.com/${post.type}/${post.id}/embed/`}
+                  title={post.label}
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+              <a href={post.url} target="_blank" rel="noreferrer" className="instagram-gallery__link">
+                <Instagram size={16} /> View original on Instagram <ArrowUpRight size={15} />
+              </a>
+            </article>
           ))}
-          <div className="gallery-note gallery-note--empty">
-            <span>THE GALLERY</span>
-            <p>Real Tasly moments, coming from Instagram.</p>
-            <a href="https://www.instagram.com/taslyhealthytreats/" target="_blank" rel="noreferrer">View the Instagram account <ArrowRight size={15} /></a>
-          </div>
         </section>
+        <p className="instagram-gallery__note">If Instagram does not load an embed in your browser, use “View original on Instagram” to open the post directly.</p>
       </main>
-      {current && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={() => setActive(null)}>
-          <button ref={closeRef} className="lightbox__close" type="button" onClick={() => setActive(null)} aria-label="Close gallery"><X size={24} /></button>
-          <button className="lightbox__arrow lightbox__arrow--left" type="button" aria-label="Previous image" onClick={(event) => { event.stopPropagation(); setActive((v) => v === null ? null : (v + GALLERY_ITEMS.length - 1) % GALLERY_ITEMS.length); }} disabled={GALLERY_ITEMS.length < 2}><ArrowLeft size={22} /></button>
-          <figure className="lightbox__figure" onClick={(event) => event.stopPropagation()}>
-            <img src={current.src} alt={current.alt} />
-            <figcaption>{current.caption}</figcaption>
-          </figure>
-          <button className="lightbox__arrow lightbox__arrow--right" type="button" aria-label="Next image" onClick={(event) => { event.stopPropagation(); setActive((v) => v === null ? null : (v + 1) % GALLERY_ITEMS.length); }} disabled={GALLERY_ITEMS.length < 2}><ArrowRight size={22} /></button>
-        </div>
-      )}
     </SiteShell>
   );
 }
-
