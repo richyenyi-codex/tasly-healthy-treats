@@ -62,12 +62,16 @@ function HomePage() {
           <Link to="/about" className="text-link">Get to know Tasly <ArrowUpRight size={17} /></Link>
         </section>
 
-        <section className="home-image-band home-image-band--text" aria-label="The Tasly experience">
-          <div className="home-image-band__caption">
-            <span>THE TASLY FEEL</span>
-            <p>Fresh details.<br />Easy moments.</p>
+        <section className="home-social-feature section-pad" aria-label="Tasly on Instagram">
+          <div className="home-social-feature__copy">
+            <p className="eyebrow">A look at Tasly</p>
+            <h2>See what’s being shared.</h2>
+            <p>Explore an original Reel from Tasly’s Instagram, then visit the page for more updates and moments.</p>
+            <a className="text-link" href="https://www.instagram.com/reel/Cx-oL1bIuG8/" target="_blank" rel="noreferrer">Watch on Instagram <ArrowUpRight size={17} /></a>
           </div>
-          <div className="home-image-band__orbit" aria-hidden="true">T</div>
+          <div className="home-social-feature__frame">
+            <iframe src="https://www.instagram.com/reel/Cx-oL1bIuG8/embed/" title="Tasly Healthy Treats Instagram Reel" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" />
+          </div>
         </section>
 
         <section className="home-menu-callout section-pad">

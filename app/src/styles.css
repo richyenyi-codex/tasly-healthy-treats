@@ -451,3 +451,16 @@ body { margin: 0; }
 .instagram-gallery__link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .instagram-gallery__note { width: min(1080px, 100%); margin: 30px auto 0; color: var(--tasly-muted); font-size: 13px; line-height: 1.7; }
 @media (max-width: 720px) { .instagram-gallery { grid-template-columns: 1fr; gap: 28px; } .instagram-gallery__frame { max-width: 500px; } .instagram-gallery__frame iframe { min-height: 560px; } }
+
+/* Original Instagram media placements on the Home and About pages. */
+.home-social-feature { display: grid; grid-template-columns: 1fr minmax(300px, 440px); gap: clamp(36px, 8vw, 110px); align-items: center; width: min(1160px, 100%); margin: 0 auto; }
+.home-social-feature__copy { max-width: 520px; }
+.home-social-feature__copy h2 { margin: 0; font-family: "Cabinet Grotesk", "URW Gothic", Arial, sans-serif; font-size: clamp(42px, 6vw, 76px); line-height: .98; letter-spacing: -.055em; text-wrap: balance; }
+.home-social-feature__copy > p:not(.eyebrow) { color: var(--tasly-muted); font-size: 15px; line-height: 1.75; max-width: 420px; }
+.home-social-feature__frame { width: 100%; max-width: 440px; min-height: 560px; overflow: hidden; border: 1px solid var(--tasly-line); border-radius: 14px; background: #f7f6f0; }
+.home-social-feature__frame iframe { display: block; width: 100%; height: 600px; border: 0; }
+.about-feature__instagram { min-width: 0; max-width: 520px; margin: 0 auto; width: 100%; }
+.about-feature__instagram iframe { display: block; width: 100%; height: 620px; border: 1px solid var(--tasly-line); border-radius: 14px; background: #f7f6f0; }
+.about-feature__instagram a { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--tasly-leaf); font-size: 13px; font-weight: 700; text-decoration: none; }
+.about-feature__instagram a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 720px) { .home-social-feature { grid-template-columns: 1fr; gap: 30px; } .home-social-feature__frame { max-width: 500px; margin: 0 auto; } .about-feature__instagram { max-width: 500px; } }
