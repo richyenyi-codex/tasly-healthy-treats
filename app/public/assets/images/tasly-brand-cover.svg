@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14231b"/>
+      <stop offset="1" stop-color="#304b38"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="930" cy="300" r="220" fill="none" stroke="#b7c96a" stroke-opacity=".25" stroke-width="2"/>
+  <circle cx="930" cy="300" r="155" fill="none" stroke="#b7c96a" stroke-opacity=".2" stroke-width="2"/>
+  <path d="M930 392c-110-60-117-157-12-222 67 92 57 164 12 222Z" fill="none" stroke="#b7c96a" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M930 390c-8-70-1-124 35-179" fill="none" stroke="#b7c96a" stroke-width="6" stroke-linecap="round"/>
+  <text x="100" y="280" fill="#fff" font-family="Arial,sans-serif" font-size="100" font-weight="700" letter-spacing="-6">TASLY</text>
+  <text x="108" y="340" fill="#dce7b3" font-family="Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="12">HEALTHY TREATS</text>
+  <text x="108" y="430" fill="#fff" fill-opacity=".78" font-family="Arial,sans-serif" font-size="25">A fresher kind of treat.</text>
+</svg>

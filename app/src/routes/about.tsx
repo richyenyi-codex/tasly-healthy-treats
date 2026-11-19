@@ -13,8 +13,9 @@ function AboutPage() {
       <main className="inner-page">
         <PageIntro eyebrow="About Tasly" title="Meet Tasly Healthy Treats." description="Tasly Healthy Treats is a café brand with a simple invitation: come discover the treats, the atmosphere and the story behind the name." />
         <section className="about-feature">
-          <div className="about-feature__image">
-            <img src="/assets/images/tasly-cafe-interior.png" alt="A café corner with leafy greenery, natural wood and soft window light" />
+          <div className="about-feature__image about-feature__image--brand" aria-label="Tasly Healthy Treats brand panel">
+            <span>TASLY</span><small>HEALTHY TREATS</small>
+            <Leaf size={38} aria-hidden="true" />
           </div>
           <div className="about-feature__copy">
             <span className="about-leaf"><Leaf size={25} /></span>

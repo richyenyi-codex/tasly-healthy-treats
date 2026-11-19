@@ -24,11 +24,8 @@ export type MenuItem = {
 // ingredients and prices here before enabling WhatsApp product ordering.
 export const MENU_ITEMS: MenuItem[] = [];
 
-export const GALLERY_ITEMS = [
-  {
-    src: "/assets/images/tasly-cafe-interior.png",
-    alt: "A calm café corner with leafy greenery, natural wood and soft window light",
-    caption: "A welcoming café atmosphere",
-  },
-];
-
+export const GALLERY_ITEMS: Array<{
+  src: string;
+  alt: string;
+  caption: string;
+}> = [];

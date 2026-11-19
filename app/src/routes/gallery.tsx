@@ -39,7 +39,7 @@ function GalleryPage() {
   return (
     <SiteShell>
       <main className="inner-page">
-        <PageIntro eyebrow="Gallery" title="Tasly Healthy Treats, in view." description="A first look at the visual atmosphere. More official photographs can be added as the gallery grows." />
+        <PageIntro eyebrow="Gallery" title="Tasly Healthy Treats, in view." description="Photos and videos from Tasly’s Instagram will appear here. The gallery is being kept clear until the original posts are supplied." />
         <section className="gallery-grid" aria-label="Tasly gallery">
           {GALLERY_ITEMS.map((item, index) => (
             <button className="gallery-tile" type="button" key={item.src} onClick={() => setActive(index)} aria-label={`Open image: ${item.caption}`}>
@@ -47,9 +47,10 @@ function GalleryPage() {
               <span>{item.caption}</span>
             </button>
           ))}
-          <div className="gallery-note">
+          <div className="gallery-note gallery-note--empty">
             <span>THE GALLERY</span>
-            <p>More moments will be added with Tasly’s own photographs.</p>
+            <p>Real Tasly moments, coming from Instagram.</p>
+            <a href="https://www.instagram.com/taslyhealthytreats/" target="_blank" rel="noreferrer">View the Instagram account <ArrowRight size={15} /></a>
           </div>
         </section>
       </main>

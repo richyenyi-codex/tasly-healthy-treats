@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, Leaf } from "lucide-react";
 import { StructuredData } from "@/components/StructuredData";
 import { SiteShell } from "@/components/site-shell";
-import { ScrollScrub } from "@/components/scroll-scrub/scroll-scrub";
-import { scrollScrubScenes, scrollScrubTheme } from "@/scroll-scrub-scenes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,12 +39,19 @@ function HomePage() {
     <SiteShell overlayHeader>
       <main>
         <StructuredData json={businessSchema} />
-        <section className="home-scrub" aria-label="Tasly Healthy Treats introduction">
-          <ScrollScrub scenes={scrollScrubScenes} theme={scrollScrubTheme} />
-          <div className="home-scrub__overlay">
+        <section className="home-hero" aria-label="Tasly Healthy Treats introduction">
+          <div className="home-hero__orb home-hero__orb--one" aria-hidden="true" />
+          <div className="home-hero__orb home-hero__orb--two" aria-hidden="true" />
+          <div className="home-hero__content">
             <p className="home-scrub__eyebrow"><span /> TASLY HEALTHY TREATS</p>
-            <p className="home-scrub__hint">A fresher kind of treat <ArrowDownRight size={16} /></p>
+            <h1>A fresher kind<br />of <em>treat.</em></h1>
+            <p>Good things are growing. Discover Tasly Healthy Treats.</p>
+            <div className="home-hero__actions">
+              <Link to="/menu" className="button-link button-link--light">Explore the menu <ArrowUpRight size={17} /></Link>
+              <Link to="/about" className="hero-text-link">Our story <ArrowDownRight size={16} /></Link>
+            </div>
           </div>
+          <div className="home-hero__index" aria-hidden="true">FRESH / SIMPLE / TASLY</div>
         </section>
 
         <section className="home-manifesto section-pad">
@@ -57,12 +62,12 @@ function HomePage() {
           <Link to="/about" className="text-link">Get to know Tasly <ArrowUpRight size={17} /></Link>
         </section>
 
-        <section className="home-image-band" aria-label="Café atmosphere">
-          <img src="/assets/images/tasly-cafe-wide.jpg" alt="A calm café corner with greenery and natural light" loading="lazy" />
+        <section className="home-image-band home-image-band--text" aria-label="The Tasly experience">
           <div className="home-image-band__caption">
             <span>THE TASLY FEEL</span>
-            <p>Fresh details. Easy moments.</p>
+            <p>Fresh details.<br />Easy moments.</p>
           </div>
+          <div className="home-image-band__orbit" aria-hidden="true">T</div>
         </section>
 
         <section className="home-menu-callout section-pad">

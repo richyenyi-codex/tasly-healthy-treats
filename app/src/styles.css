@@ -414,3 +414,31 @@ body { margin: 0; }
 .scrub-action-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .instagram-glyph { display: inline-grid; place-items: center; width: 18px; height: 18px; border: 1px solid currentColor; border-radius: 5px; font-size: 10px; font-weight: 800; letter-spacing: -.04em; }
+
+/* Brand-led animated hero; real food and café media will be inserted from Tasly's Instagram. */
+.home-hero { position: relative; min-height: min(820px, 100svh); overflow: hidden; display: flex; align-items: center; padding: 130px max(7vw, 24px) 90px; color: #fff; background: radial-gradient(ellipse at 72% 28%, rgba(183,201,106,.2), transparent 34%), linear-gradient(135deg, #14231b 0%, #243b2d 58%, #101d16 100%); }
+.home-hero__content { position: relative; z-index: 2; width: min(850px, 100%); animation: tasly-rise .9s cubic-bezier(.2,.7,.2,1) both; }
+.home-hero__content h1 { margin: 26px 0 18px; font-family: "Cabinet Grotesk", "URW Gothic", Arial, sans-serif; font-size: clamp(64px, 10vw, 132px); line-height: .88; letter-spacing: -.075em; }
+.home-hero__content h1 em { color: var(--tasly-accent); font-style: normal; }
+.home-hero__content > p:not(.home-scrub__eyebrow) { max-width: 430px; color: rgba(255,255,255,.78); font-size: clamp(15px, 1.5vw, 19px); line-height: 1.65; }
+.home-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 32px; }
+.hero-text-link { display: inline-flex; align-items: center; gap: 8px; color: white; text-decoration: none; font-size: 13px; }
+.home-hero__orb { position: absolute; border: 1px solid rgba(220,231,179,.2); border-radius: 50%; pointer-events: none; animation: tasly-orbit 16s ease-in-out infinite alternate; }
+.home-hero__orb--one { width: min(52vw, 660px); aspect-ratio: 1; right: -8%; top: 10%; box-shadow: inset 0 0 80px rgba(183,201,106,.08), 0 0 90px rgba(183,201,106,.08); }
+.home-hero__orb--two { width: min(32vw, 410px); aspect-ratio: 1; right: 5%; top: 26%; border-color: rgba(220,231,179,.13); animation-delay: -5s; }
+.home-hero__index { position: absolute; right: 6vw; bottom: 34px; color: rgba(255,255,255,.55); font-size: 9px; letter-spacing: .22em; }
+.home-image-band--text { display: flex; align-items: center; justify-content: space-between; padding: 70px max(7vw, 24px); background: #dfe6d5; color: var(--tasly-leaf); }
+.home-image-band--text::after { display: none; }
+.home-image-band--text .home-image-band__caption { position: relative; z-index: 1; bottom: auto; left: auto; color: inherit; }
+.home-image-band--text .home-image-band__caption p { font-size: clamp(40px, 7vw, 88px); }
+.home-image-band__orbit { display: grid; place-items: center; width: clamp(150px, 24vw, 310px); aspect-ratio: 1; border: 1px solid rgba(23,37,29,.25); border-radius: 50%; color: rgba(23,37,29,.16); font-family: "Cabinet Grotesk", Arial, sans-serif; font-size: clamp(90px, 16vw, 210px); animation: tasly-orbit 18s ease-in-out infinite alternate-reverse; }
+.about-feature__image--brand { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--tasly-leaf); background: linear-gradient(145deg, #e5eadc, #cbd7c1); }
+.about-feature__image--brand span { font-family: "Cabinet Grotesk", Arial, sans-serif; font-size: clamp(60px, 10vw, 120px); font-weight: 800; letter-spacing: -.08em; }
+.about-feature__image--brand small { font-size: 10px; font-weight: 800; letter-spacing: .24em; }
+.about-feature__image--brand svg { margin-top: 22px; opacity: .7; }
+.gallery-note--empty { grid-column: 1 / -1; min-height: 380px; }
+.gallery-note--empty a { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: white; text-decoration: none; font-size: 13px; }
+@keyframes tasly-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes tasly-orbit { from { transform: translate3d(0, -12px, 0) rotate(-7deg); } to { transform: translate3d(0, 16px, 0) rotate(7deg); } }
+@media (max-width: 600px) { .home-hero { min-height: 760px; padding-top: 150px; } .home-hero__orb--one { width: 100vw; right: -42%; top: 35%; } .home-hero__orb--two { width: 65vw; right: -4%; top: 48%; } .home-image-band--text { min-height: 360px; padding: 42px 22px; } .home-image-band__orbit { width: 34vw; } }
+@media (prefers-reduced-motion: reduce) { .home-hero__content, .home-hero__orb, .home-image-band__orbit { animation: none !important; } }
