@@ -1,10 +1,6 @@
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import {
-  higgsfieldDesignInspectorVitePlugin,
-  higgsfieldDesignSourceBabelPlugin,
-} from "./src/module/design-inspector/vite";
 import svgr from "vite-plugin-svgr";
 import { defaultServerConditions, defineConfig } from "vite";
 import { fileURLToPath } from "node:url";
@@ -18,9 +14,7 @@ const QUANTA_ICONS_SHIM = fileURLToPath(
   new URL("./src/lib/quanta-icons.ts", import.meta.url),
 );
 
-export default defineConfig(({ command, mode }) => {
-  const designInspectorEnabled = process.env.HF_DESIGN_INSPECTOR === "1" || mode === "design";
-
+export default defineConfig(({ command }) => {
   return {
     // fsevents can miss edits under some setups (bun-launched dev, synced/virtual
     // dirs), leaving HMR dead so changes only appear after a manual restart.
@@ -87,25 +81,13 @@ export default defineConfig(({ command, mode }) => {
       }),
       // TanStack Start plugin must run before React's plugin.
       //
-      // SSR build: `vite build` emits a Workers-shaped server bundle
-      // (dist/server/server.js — `export default { fetch }`) plus dist/client
-      // (hashed static assets). The platform publishes that as a per-tenant
-      // Worker on Workers for Platforms, served at <sub>.higgsfield.app/ (host
-      // root, so Vite's default base "/" — no base-path juggling).
-      //
-      // Rendering happens on the server per request, so site code must be
-      // SSR-safe: never touch browser-only globals (window, document,
-      // localStorage, navigator) during render or at module top level — only
-      // inside effects/handlers, or guarded with `typeof window !== "undefined"`.
+      // SSR build: `vite build` emits a Cloudflare Worker server bundle and
+      // hashed client assets. Keep browser-only APIs inside effects/handlers
+      // so every route remains safe to render on the server.
       tanstackStart({
         server: { entry: "server" },
       }),
-      higgsfieldDesignInspectorVitePlugin(designInspectorEnabled),
-      react({
-        babel: {
-          plugins: designInspectorEnabled ? [higgsfieldDesignSourceBabelPlugin] : [],
-        },
-      }),
+      react(),
       tailwindcss(),
     ],
   };

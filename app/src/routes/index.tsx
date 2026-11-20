@@ -18,18 +18,13 @@ const businessSchema = JSON.stringify({
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://tasly-treats-studio.higgsfield.app/#organization",
       name: "Tasly Healthy Treats",
-      url: "https://tasly-treats-studio.higgsfield.app/",
       description: "Tasly Healthy Treats is a café brand. Explore its menu and get in touch.",
       sameAs: ["https://www.instagram.com/taslyhealthytreats/"],
     },
     {
       "@type": "WebSite",
-      "@id": "https://tasly-treats-studio.higgsfield.app/#website",
       name: "Tasly Healthy Treats",
-      url: "https://tasly-treats-studio.higgsfield.app/",
-      publisher: { "@id": "https://tasly-treats-studio.higgsfield.app/#organization" },
     },
   ],
 });
